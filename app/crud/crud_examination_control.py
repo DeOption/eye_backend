@@ -13,7 +13,6 @@ class CRUDExaminationControl(CRUDBase[None, ExaminationControl, None]):
             data: dict
     ) -> Any:
         """
-        添加眼球运动
         :param db: 数据库连接对象
         :param base_info_id: 病例ID
         :param data: examination_control

@@ -49,7 +49,6 @@ class BaseInfo(Base):
     examinationCornea = relationship("ExaminationCornea", back_populates='baseInfo', cascade='all, delete, delete-orphan')
     examinationSlj = relationship("ExaminationSlj", back_populates='baseInfo', cascade='all, delete, delete-orphan')
     examinationEyeballsport = relationship("ExaminationEyeballsport", back_populates='baseInfo', cascade='all, delete, delete-orphan')
-    #
     diagnosis1 = relationship("Diagnosis", back_populates='baseInfo', cascade='all, delete, delete-orphan')
     surgery1 = relationship("Surgery", back_populates='baseInfo', cascade='all, delete, delete-orphan')
     leaveHospitalLts = relationship("LeaveHospitalLts", back_populates='baseInfo', cascade='all, delete, delete-orphan')

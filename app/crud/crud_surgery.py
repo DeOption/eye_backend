@@ -19,20 +19,35 @@ class CRUDSurgery(CRUDBase[None, Surgery, None]):
         :param data: {surgery_history, glasses_history, amblyopia_history, home_history, born_history, surgery_history_edit, now_age, now_wt, now_fs}
         :return: None
         """
-        surgery_id = worker.get_id()
-        data = jsonable_encoder(data)
-        db_obj = Surgery(
-            base_info_id=base_info_id,
-            surgery_id=surgery_id,
-            **data
-        )
 
+        surgery_id_left = worker.get_id()
+        surgery_id_right = worker.get_id()
+        data = jsonable_encoder(data)
+        db_obj = [
+            Surgery(
+                base_info_id=base_info_id,
+                surgery_id=surgery_id_left,
+                surgery_yb="left",
+                **data["left"]
+            ),
+            Surgery(
+                base_info_id=base_info_id,
+                surgery_id=surgery_id_right,
+                surgery_yb="right",
+                **data["right"]
+            )
+        ]
         return db_obj
 
     def updateSurgery(self, db: Session, id: str, data: dict) -> Any:
         """修改病例详情"""
         data = jsonable_encoder(data)
-        db.query(Surgery).filter(Surgery.base_info_id == id).update(data)
+        db.query(Surgery).\
+            filter(Surgery.base_info_id == id, Surgery.surgery_yb=="left").\
+            update(data["left"])
+        db.query(Surgery). \
+            filter(Surgery.base_info_id == id, Surgery.surgery_yb == "right"). \
+            update(data["right"])
 
         return None
 
