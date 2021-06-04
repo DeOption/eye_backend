@@ -13,8 +13,10 @@ class Setting(BaseSettings):
 
     # 数据库连接
     HOSTNAME: str = '59.110.53.228'
+    #HOSTNAME: str = 'localhost'
     PORT: str = '3306'
-    DATABASE: str = 'eye_test'
+    DATABASE: str = 'eye_test2'
+    #DATABASE: str = 'db_eye2'
     USERNAME: str = 'root'
     PASSWORD: str = 'root'
     DB_URI: str = 'mysql+pymysql://{}:{}@{}:{}/{}?charset=utf8'.format(USERNAME, PASSWORD, HOSTNAME, PORT, DATABASE)

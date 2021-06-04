@@ -5,7 +5,7 @@ from app.sqlDB.base_class import Base
 
 # 三棱镜(出院)
 class LeaveHospitalSlj(Base):
-    __tablename__ = 'leave_hospital_slj_id'
+    __tablename__ = 'leave_hospital_slj'
 
     leave_hospital_slj_id = Column(VARCHAR(20), primary_key=True, comment="三棱镜(出院)表id")
     base_info_id = Column(VARCHAR(20), ForeignKey('base_info.id'), comment="基本表id")

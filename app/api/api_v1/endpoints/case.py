@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, Query, Body, HTTPException, status
 from sqlalchemy.orm import Session
 from app.api import deps
 from typing import Optional
-from app.crud import crud_case, crud_medical_history, crud_diagnosis, crud_surgery, crud_examination_nv, crud_examination_corrected_visual, crud_examination_co, crud_examination_ro, crud_examination_tsj, crud_examination_lts, crud_examination_cornea, crud_examination_slj, crud_examination_eyeballsport, crud_examination_control, crud_leave_hospital_lts, crud_leave_hospital_slj, crud_leave_hospital_cornea, crud_leave_hospital_eyeballsport
+from app.crud import crud_case, crud_medical_history, crud_diagnosis, crud_surgery, crud_examination_nv, crud_examination_corrected_visual, crud_examination_co, crud_examination_ro, crud_examination_tsj, crud_examination_lts, crud_examination_cornea, crud_examination_slj, crud_examination_eyeballsport, crud_examination_control, crud_leave_hospital_lts, crud_leave_hospital_slj, crud_leave_hospital_cornea, crud_leave_hospital_eyeballsport, crud_leave_hospital_tsj
 from app.snow.snowflake import worker
 
 router = APIRouter()
@@ -142,6 +142,7 @@ def submitCaseContent(
         create_leave_hospital_slj = crud_leave_hospital_slj.leavehospitalslj.createLeaveHospitalSlj(db=db, base_info_id=id, data=leave_history['leave_hospital_slj'])
         create_leave_hospital_cornea = crud_leave_hospital_cornea.leavehospitalcornea.createLeaveHospitalCornea(db=db, base_info_id=id, data=leave_history['leave_hospital_cornea'])
         create_leave_hospital_eyeballsport = crud_leave_hospital_eyeballsport.leavehospitaleyeballsport.createLeaveHospitalEyeballsport(db=db, base_info_id=id, data=leave_history['leave_hospital_eyeballsport'])
+        create_leave_hospital_tsj = crud_leave_hospital_tsj.leavehospitalslj.createLeaveHospitalTsj(db=db, base_info_id=id, data=leave_history['leave_hospital_tsj'])
 
         create_diagnosis = crud_diagnosis.diagnosis.createDiagnosis(db=db, base_info_id=id, data=diagnosis)
         create_surgery = crud_surgery.surgery.createSurgery(db=db, base_info_id=id, data=surgery)
@@ -159,6 +160,7 @@ def submitCaseContent(
                 create_leave_hospital_lts,
                 create_leave_hospital_slj,
                 create_leave_hospital_cornea,
+                create_leave_hospital_tsj,
                 create_diagnosis,
                 create_surgery[0],
                 create_surgery[1],
@@ -389,6 +391,7 @@ def update_case_detail(
         crud_leave_hospital_slj.leavehospitalslj.updateLeaveHospitalSlj(db=db, id=id, data=leave_history['leave_hospital_slj'])
         crud_leave_hospital_cornea.leavehospitalcornea.updateLeaveHospitalCornea(db=db, id=id, data=leave_history['leave_hospital_cornea'])
         crud_leave_hospital_eyeballsport.leavehospitaleyeballsport.updateLeaveHospitalEyeballsport(db=db, id=id, data=leave_history['leave_hospital_eyeballsport'])
+        crud_leave_hospital_tsj.leavehospitalslj.updateLeaveHospitalTsj(db=db, id=id, data=leave_history['leave_hospital_tsj'])
 
         crud_diagnosis.diagnosis.updateDiagnosis(db=db, id=id, data=diagnosis)
         crud_surgery.surgery.updateSurgery(db=db, id=id, data=surgery)

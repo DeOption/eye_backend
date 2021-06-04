@@ -277,6 +277,7 @@ class CRUDCase(CRUDBase[None, BaseInfo, None]):
             patient_dict['leave_history']['leave_hospital_lts'] = patient_i.leaveHospitalLts[0] if patient_i.leaveHospitalLts else ""
             patient_dict['leave_history']['leave_hospital_cornea'] = patient_i.leaveHospitalCornea[0] if patient_i.leaveHospitalCornea else ""
             patient_dict['leave_history']['leave_hospital_slj'] = patient_i.leaveHospitalSlj[0] if patient_i.leaveHospitalSlj else ""
+            patient_dict['leave_history']['leave_hospital_tsj'] = patient_i.leaveHospitalTsj[0] if patient_i.leaveHospitalTsj else ""
             patient_dict['leave_history']['leave_hospital_eyeballsport'] = {}
             if patient_i.leaveHospitalEyeballsport:
                 patient_dict['leave_history']['leave_hospital_eyeballsport'][patient_i.leaveHospitalEyeballsport[0].eye_type] = patient_i.leaveHospitalEyeballsport[0]

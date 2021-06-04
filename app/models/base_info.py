@@ -18,6 +18,7 @@ from app.models.surgery import Surgery
 from app.models.leave_hospital_cornea import LeaveHospitalCornea
 from app.models.leave_hospital_lts import LeaveHospitalLts
 from app.models.leave_hospital_slj import LeaveHospitalSlj
+from app.models.leave_hospital_tsj import LeaveHospitalTsj
 from app.models.examination_eyeballsport import ExaminationEyeballsport
 from app.models.diagnosis_strabismus_type_internal import DiagnosisStrabismusTypeInternal
 
@@ -55,3 +56,4 @@ class BaseInfo(Base):
     leaveHospitalCornea = relationship("LeaveHospitalCornea", back_populates='baseInfo', cascade='all, delete, delete-orphan')
     leaveHospitalSlj = relationship("LeaveHospitalSlj", back_populates='baseInfo', cascade='all, delete, delete-orphan')
     leaveHospitalEyeballsport = relationship("LeaveHospitalEyeballsport", back_populates='baseInfo', cascade='all, delete, delete-orphan')
+    leaveHospitalTsj = relationship("LeaveHospitalTsj", back_populates='baseInfo', cascade='all, delete, delete-orphan')
